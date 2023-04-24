@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ressources_relationnelles_v2/screens/connexion.dart';
 import 'package:ressources_relationnelles_v2/screens/relations.dart';
+import 'package:ressources_relationnelles_v2/screens/statistiques.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'statistiques.dart';
 
 class Profil extends StatefulWidget {
   const Profil({super.key});
@@ -106,22 +105,22 @@ class _ProfilState extends State<Profil> {
               style: const TextStyle(fontSize: 20.0),
             ),
           ),
-          if (user_id != null) const SizedBox(height: 16.0),
-          ElevatedButton(
-            onPressed: relations,
-            child: const Text(
-              'Relations',
-              style: TextStyle(fontSize: 20.0),
+          if (user_id != null)
+            ElevatedButton(
+              onPressed: relations,
+              child: const Text(
+                'Relations',
+                style: TextStyle(fontSize: 20.0),
+              ),
             ),
-          ),
-          if (role == 3) const SizedBox(height: 16.0),
-          ElevatedButton(
-            onPressed: lienStats,
-            child: const Text(
-              'Statistiques',
-              style: TextStyle(fontSize: 20.0),
+          if (role != null)
+            ElevatedButton(
+              onPressed: lienStats,
+              child: const Text(
+                'Statistiques',
+                style: TextStyle(fontSize: 20.0),
+              ),
             ),
-          ),
         ],
       ),
     );

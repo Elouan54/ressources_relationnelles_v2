@@ -45,7 +45,12 @@ class _RelationsState extends State<Relations> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Relations"),
+        backgroundColor: const Color.fromARGB(255, 3, 152, 158),
+      ),
+      body: ListView.builder(
         itemCount: relations.length,
         itemBuilder: (BuildContext context, int index) {
           return Card(
@@ -68,6 +73,8 @@ class _RelationsState extends State<Relations> {
               ),
             ),
           );
-        });
+        },
+      ),
+    );
   }
 }
