@@ -25,10 +25,11 @@ class _RelationsState extends State<Relations> {
 
     final response =
         await dio.get('http://localhost:5083/api/Relation_Utilisateurs');
+    print(response.data);
     response.data.forEach((data) {
       final Relation relation = Relation(
           idRelationUtilisateurs: data["idRelationUtilisateurs"] ?? 0,
-          utilisateur: data["utilisateur"],
+          utilisateur: data["utilisateur"] ?? 0,
           utilisateurVoulu: data["utilisateurVoulu"] ?? 0,
           typeRelation: data["typeRelation"].toString(),
           relationConfirmee: (data["relationConfirmee"] == 0 ? false : true));

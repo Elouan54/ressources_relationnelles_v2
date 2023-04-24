@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'moderation.dart';
+import 'recherche.dart';
 
 class PrincipalMaster extends StatefulWidget {
   const PrincipalMaster({super.key});
@@ -36,6 +37,7 @@ class _PrincipalMasterState extends State<PrincipalMaster> {
   Widget build(BuildContext context) {
     final listeLiens = [
       const Ressource(),
+      const Recherche(),
       const Profil(),
       const Moderation(),
     ];
@@ -62,14 +64,19 @@ class _PrincipalMasterState extends State<PrincipalMaster> {
             label: 'Ressources',
           ),
           const BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Recherche',
+          ),
+          const BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
             label: 'Profil',
           ),
-          if (role == 2)
+          if (role == 2) ...[
             const BottomNavigationBarItem(
               icon: Icon(Icons.check),
               label: 'Moderation',
             ),
+          ],
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

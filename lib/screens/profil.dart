@@ -34,6 +34,7 @@ class _ProfilState extends State<Profil> {
     final prefs = await SharedPreferences.getInstance();
     prefs.clear();
     getUser();
+    getRole();
   }
 
   @override
@@ -105,7 +106,7 @@ class _ProfilState extends State<Profil> {
               style: const TextStyle(fontSize: 20.0),
             ),
           ),
-          if (user_id != null)
+          if (user_id != null) ...[
             ElevatedButton(
               onPressed: relations,
               child: const Text(
@@ -113,7 +114,8 @@ class _ProfilState extends State<Profil> {
                 style: TextStyle(fontSize: 20.0),
               ),
             ),
-          if (role != null)
+          ],
+          if (role == 2) ...[
             ElevatedButton(
               onPressed: lienStats,
               child: const Text(
@@ -121,6 +123,7 @@ class _ProfilState extends State<Profil> {
                 style: TextStyle(fontSize: 20.0),
               ),
             ),
+          ],
         ],
       ),
     );

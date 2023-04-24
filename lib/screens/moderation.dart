@@ -29,7 +29,7 @@ class _ModerationState extends State<Moderation> {
       final Ressources ressource = Ressources(
           id_ressource: data["id_ressource"].toString(),
           titre: data["titre"].toString(),
-          langue_nom: data["langue_nom"].toString(),
+          // langue_nom: data["langue_nom"].toString(),
           date_moderation: data["date_moderation"].toString(),
           validation_moderation:
               (data["validation_moderation"] == 0 ? false : true),
@@ -59,23 +59,24 @@ class _ModerationState extends State<Moderation> {
       final ressource = Ressources(
         id_ressource: responseSelect.data["id_ressource"].toString(),
         titre: responseSelect.data["titre"].toString(),
-        langue_nom: responseSelect.data["langue_nom"].toString(),
+        // langue_nom: responseSelect.data["langue_nom"].toString(),
         date_moderation: dateFormat,
         validation_moderation: true,
         description: responseSelect.data["description"].toString(),
         age_minimum: responseSelect.data["age_minimum"] ?? 0,
         compteur_vue: responseSelect.data["compteur_vue"] ?? 0,
       );
-      print(responseSelect.data);
+      //print(responseSelect.data);
 
       // Envoi d'une requête PUT pour mettre à jour la ressource sur le serveur
       final responseUpdate = await dio.put(
         'http://localhost:5083/api/Ressources/${ressource.id_ressource}',
         data: ressource.toJson(),
       );
-      print(responseUpdate.statusCode);
-      if (responseUpdate.statusCode == 200) {
-        print(responseUpdate.data);
+      //print(responseUpdate.statusCode);
+      if (responseUpdate.statusCode == 204) {
+        fetchRessources();
+        //print(responseUpdate.data);
       }
     }
   }

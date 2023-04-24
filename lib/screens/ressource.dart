@@ -30,7 +30,7 @@ class _RessourceState extends State<Ressource> {
       final Ressources ressource = Ressources(
           id_ressource: data["id_ressource"].toString(),
           titre: data["titre"].toString(),
-          langue_nom: data["langue_nom"].toString(),
+          // langue_nom: data["langue_nom"].toString(),
           date_moderation: data["date_moderation"].toString(),
           validation_moderation:
               (data["validation_moderation"] == 0 ? false : true),
