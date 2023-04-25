@@ -66,10 +66,16 @@ class _RessourceState extends State<Ressource> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      ressources[index].titre,
-                      style: const TextStyle(
-                          fontSize: 24.0, fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          ressources[index].titre,
+                          style: const TextStyle(
+                              fontSize: 24.0, fontWeight: FontWeight.bold),
+                        ),
+                        const Icon(Icons.star_border),
+                      ],
                     ),
                     const SizedBox(height: 8.0),
                     Text(

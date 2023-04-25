@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:ressources_relationnelles_v2/screens/profil.dart';
 
 import '../providers/utilisateurs.dart';
+import 'detailProfil.dart';
 
 final dio = Dio();
 
@@ -89,21 +91,33 @@ class _RechercheState extends State<Recherche> {
           ],
         ),
         if (trouve == true) ...[
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    users[0].pseudo,
-                    style: const TextStyle(
-                        fontSize: 24.0, fontWeight: FontWeight.bold),
-                  ),
-                ],
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailProfil(
+                      profil: users[0],
+                      moi: 1,
+                    ),
+                  ));
+            },
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      users[0].pseudo,
+                      style: const TextStyle(
+                          fontSize: 24.0, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
               ),
             ),
-          )
+          ),
         ] else ...[
           if (premiere == false) ...[
             const Text("Aucun utilisateur avec ce pseudo."),
