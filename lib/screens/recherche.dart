@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:ressources_relationnelles_v2/screens/profil.dart';
 
 import '../providers/utilisateurs.dart';
-import 'detailProfil.dart';
+import 'detail_profil.dart';
 
 final dio = Dio();
 
 class Recherche extends StatefulWidget {
+  // ignore: use_key_in_widget_constructors
   const Recherche({Key? key});
 
   @override

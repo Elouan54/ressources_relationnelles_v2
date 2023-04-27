@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:ressources_relationnelles_v2/screens/connexion.dart';
-import 'package:ressources_relationnelles_v2/screens/detailProfil.dart';
 import 'package:ressources_relationnelles_v2/screens/relations.dart';
 import 'package:ressources_relationnelles_v2/screens/statistiques.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../providers/utilisateurs.dart';
+import 'detail_profil.dart';
 
 final dio = Dio();
 
@@ -18,13 +18,14 @@ class Profil extends StatefulWidget {
 }
 
 class _ProfilState extends State<Profil> {
-  var user_id;
+  // ignore: prefer_typing_uninitialized_variables
+  var userId;
   getUser() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      user_id = prefs.getInt('user');
+      userId = prefs.getInt('user')!;
     });
-    //print("user = " + user_id.toString());
+    //print("user = " + userId.toString());
   }
 
   int? role;
@@ -48,7 +49,7 @@ class _ProfilState extends State<Profil> {
     getUser();
     getRole();
     Future.delayed(const Duration(seconds: 1), () {
-      if (user_id == null) {
+      if (userId == null) {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const Connexion()),
@@ -66,8 +67,8 @@ class _ProfilState extends State<Profil> {
   }
 
   verifConnexion() {
-    //print(user_id);
-    if (user_id != null) {
+    //print(userId);
+    if (userId != null) {
       removeUser();
     } else {
       Navigator.push(
@@ -142,11 +143,11 @@ class _ProfilState extends State<Profil> {
           ElevatedButton(
             onPressed: verifConnexion,
             child: Text(
-              user_id != null ? 'Déconnexion' : 'Connexion',
+              userId != null ? 'Déconnexion' : 'Connexion',
               style: const TextStyle(fontSize: 20.0),
             ),
           ),
-          if (user_id != null) ...[
+          if (userId != null) ...[
             ElevatedButton(
               onPressed: relations,
               child: const Text(
@@ -155,7 +156,7 @@ class _ProfilState extends State<Profil> {
               ),
             ),
             ElevatedButton(
-              onPressed: () => profil(user_id),
+              onPressed: () => profil(userId),
               child: const Text(
                 'Profil',
                 style: TextStyle(fontSize: 20.0),

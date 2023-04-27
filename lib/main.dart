@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ressources_relationnelles_v2/screens/principalMaster.dart';
+import 'package:ressources_relationnelles_v2/screens/principal_master.dart';
 
 void main() {
   runApp(const MyApp());

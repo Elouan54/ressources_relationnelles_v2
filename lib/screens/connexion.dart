@@ -32,7 +32,7 @@ class _ConnexionState extends State<Connexion> {
           // ignore: prefer_interpolation_to_compose_strings
           .get('http://localhost:5083/api/Utilisateurs/' + mail + ', ' + mdp);
       if (response.statusCode == 200) {
-        StoreLogin(response.data);
+        storeLogin(response.data);
       } else {
         setState(() {
           error = true;
@@ -46,7 +46,7 @@ class _ConnexionState extends State<Connexion> {
     }
   }
 
-  StoreLogin(data) async {
+  storeLogin(data) async {
     //print(data['id_user']);
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt('user', data['id_user']);

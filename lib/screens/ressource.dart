@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:ressources_relationnelles_v2/screens/detailRessource.dart';
 import '../providers/ressources.dart';
+import 'detail_ressource.dart';
 
 final dio = Dio();
 
