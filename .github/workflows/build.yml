@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   sonarcloud:
-    name: SonarCloud
+    name: SonarCloud 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,13 +17,4 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-# sonar.projectKey=my-flutter-project-key
-# sonar.projectName=My Flutter Project
-# sonar.login=3c5a6b63e2eb7dbdd3c503991af219d2ecef7e28
-# sonar.host.url=http://localhost:9000
-# sonar.sources=lib
-# sonar.tests=test
-# sonar.sourceEncoding=UTF-8
-# sonar.exclusions=test/**/*_test.mocks.dart,lib/**/*.g.dart
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
